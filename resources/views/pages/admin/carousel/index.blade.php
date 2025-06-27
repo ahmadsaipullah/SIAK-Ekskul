@@ -1,6 +1,6 @@
 @extends('layouts.template_default')
-@section('title', 'Halaman Admin')
-@section('admin', 'active')
+@section('title', 'Carousel Ekskul')
+@section('carousel', 'active')
 
 @section('content')
     <div class="content-wrapper">
@@ -11,12 +11,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h5 class="m-0 text-xs">Halaman Admin</h5>
+                        <h5 class="m-0 text-xs">Carousel Ekskul</h5>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right text-xs">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Halaman Admin</li>
+                            <li class="breadcrumb-item active">Carousel Ekskul</li>
                         </ol>
                     </div>
                 </div>
@@ -31,8 +31,8 @@
 
                         <div class="card">
                             <div class="card-header py-2">
-                                <a href="{{ route('admin.create') }}" class="btn btn-primary btn-xs">
-                                    <i class="fa fa-plus"></i> Tambah Admin
+                                <a href="{{ route('carousel.create') }}" class="btn btn-primary btn-xs">
+                                    <i class="fa fa-plus"></i> Tambah Carousel
                                 </a>
                             </div>
 
@@ -42,40 +42,29 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Nama</th>
-                                                <th>Email</th>
-                                                <th>No HP</th>
-                                                <th>Role</th>
-                                                <th>Image</th>
-                                                <th>Action</th>
+                                                <th>Judul</th>
+                                                <th>Deskripsi</th>
+                                                <th>Foto</th>
+                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($admins as $admin)
+                                            @forelse ($items as $item)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $admin->name }}</td>
-                                                    <td>{{ $admin->email }}</td>
-                                                    <td>{{ $admin->no_hp }}</td>
-                                                    <td>{{ $admin->Level->level }}</td>
+                                                    <td>{{ $item->judul }}</td>
+                                                    <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                                                     <td class="text-center">
-                                                        @if ($admin->image)
-                                                            <img src="{{ Storage::url($admin->image) }}" alt="gambar"
-                                                                 width="80" height="80"
-                                                                 class="img-fluid rounded-circle object-fit-cover">
-                                                        @else
-                                                            <img src="{{ asset('assets/img/user_default.png') }}" alt="default"
-                                                                 width="80" height="80"
-                                                                 class="img-fluid rounded-circle object-fit-cover">
-                                                        @endif
+                                                        <img src="{{ Storage::url($item->image) }}" width="80" height="80"
+                                                             class="rounded object-fit-cover" alt="image">
                                                     </td>
                                                     <td class="text-center">
                                                         <div class="d-flex justify-content-center gap-1">
-                                                            <a href="{{ route('admin.edit', $admin->id) }}"
+                                                            <a href="{{ route('carousel.edit', $item->id) }}"
                                                                class="btn btn-warning btn-xs">
                                                                 <i class="fa fa-pen"></i>
                                                             </a>
-                                                            <form action="{{ route('admin.destroy', $admin->id) }}"
+                                                            <form action="{{ route('carousel.destroy', $item->id) }}"
                                                                   method="POST" class="d-inline">
                                                                 @csrf
                                                                 @method('DELETE')
@@ -88,7 +77,7 @@
                                                 </tr>
                                             @empty
                                                 <tr>
-                                                    <td colspan="7" class="text-center py-4">Data Kosong</td>
+                                                    <td colspan="5" class="text-center py-4">Data Kosong</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>

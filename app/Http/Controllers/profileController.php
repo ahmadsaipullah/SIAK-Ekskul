@@ -26,13 +26,9 @@ class profileController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'nopol' => ['required', 'string','unique:users,nopol,' . $id],
-            'no_rangka' => ['required', 'string','unique:users,no_rangka,' . $id],
             'no_hp' => ['required', 'string', 'max:13'],
             'email' => ['required', 'string', 'lowercase', 'email:dns', 'max:255', 'unique:users,email,' . $id],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
-            'tipe_mobil' => ['required', 'string'],
-            'alamat' => ['required', 'string'],
 
         ]);
 

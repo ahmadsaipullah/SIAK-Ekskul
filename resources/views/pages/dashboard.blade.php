@@ -1,61 +1,84 @@
 @extends('layouts.template_default')
 @section('title', 'SMK PGRI CIKUPA')
-@section('dashboard', 'active ')
+@section('dashboard', 'active')
+
 @section('content')
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <div class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Selamat Datang, <span class="btn btn-xs btn-success font-italic">{{ auth()->user()->name }}</span> SMK PGRI CIKUPA</h1>
-                    </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                        </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+<div class="content-wrapper">
+    <!-- Header -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-3">
+                <div class="col-12">
+                    <h5 class="m-0">Selamat Datang, <span class="badge badge-success">{{ auth()->user()->name }}</span></h5>
+                    <small>Di web sistem pusat informasi ekstrakurikuler <strong>SMKS PGRI CIKUPA</strong></small>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
-                @if (auth()->user()->level_id == 1)
-                    <div class="row">
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-primary">
-                                <div class="inner">
-                                    <h3>{{ $user }}</h3>
-
-                                    <p>User Registrations</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="{{ route('admin.index') }}" class="small-box-footer">More info <i
-                                        class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-
-                @else
-                    <div class="mb-4">
-
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-md-12 mb-4">
-                                <h1 class="text-center text-bold">SMK PGRI CIKUPA</h1>
-                            </div>
-
-                @endif
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
-        </section>
-        <!-- /.content -->
     </div>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+<!-- SLIDER DINAMIS -->
+@if($carousels->count() > 0)
+<div id="carouselEskul" class="carousel slide mb-4" data-ride="carousel">
+    <div class="carousel-inner rounded">
+
+        @foreach ($carousels as $key => $carousel)
+            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                <img src="{{ Storage::url($carousel->image) }}" class="d-block w-100" alt="{{ $carousel->judul }}"
+                     style="height: 300px; object-fit: cover;">
+
+                <!-- Judul dan Deskripsi -->
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-2">
+                    <h5 class="m-0">{{ $carousel->judul }}</h5>
+                    <small>{{ $carousel->deskripsi }}</small>
+                </div>
+            </div>
+        @endforeach
+
+    </div>
+
+    <!-- Navigasi -->
+    <a class="carousel-control-prev" href="#carouselEskul" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselEskul" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+    </a>
+</div>
+@else
+    <div class="alert alert-info text-center">Belum ada data carousel ekskul ditambahkan.</div>
+@endif
+
+
+            <!-- Menu Akses Siswa -->
+            {{-- @if(auth()->user()->level_id != 1) --}}
+            <div class="row text-center">
+                <div class="col-6 col-md-3 mb-3">
+                    <a href="#" class="btn btn-outline-primary w-100 py-3">
+                        <i class="fas fa-users fa-2x mb-2"></i><br>Ekstrakurikuler
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <a href="#" class="btn btn-outline-success w-100 py-3">
+                        <i class="fas fa-calendar-alt fa-2x mb-2"></i><br>Jadwal Eskul
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <a href="#" class="btn btn-outline-info w-100 py-3">
+                        <i class="fas fa-clipboard-check fa-2x mb-2"></i><br>Riwayat Nilai
+                    </a>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <a href="#" class="btn btn-outline-warning w-100 py-3">
+                        <i class="fas fa-user-check fa-2x mb-2"></i><br>Riwayat Absen
+                    </a>
+                </div>
+            </div>
+            {{-- @endif --}}
+
+        </div>
+    </section>
+</div>
 @endsection
