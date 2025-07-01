@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\Admin\EskulController;
 use App\Http\Controllers\Admin\CarouselEskulController;
 use App\Http\Controllers\Admin\{adminController,dashboardController};
 
@@ -39,6 +40,8 @@ Route::middleware(['Admin'])->group( function(){
 Route::resource('/admin', adminController::class);
 // crud carousel
 Route::resource('carousel', CarouselEskulController::class);
+// crud eskul
+Route::resource('eskul', EskulController::class);
 
 
 

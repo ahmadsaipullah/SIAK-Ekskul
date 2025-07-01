@@ -1,5 +1,6 @@
 @extends('layouts.template_default')
 @section('title', 'Create Carousel Ekskul')
+@section('carousel', 'active')
 
 @section('content')
     <div class="content-wrapper">

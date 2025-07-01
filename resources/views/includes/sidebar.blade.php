@@ -61,8 +61,8 @@
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 @if (Auth()->user()->image)
-                    <img src="{{ Storage::url(Auth()->user()->image) }}" alt="User Image"
-                        class="img-circle elevation-2" style="width: 40px; height: 40px; object-fit: cover;">
+                    <img src="{{ Storage::url(Auth()->user()->image) }}" alt="User Image" class="img-circle elevation-2"
+                        style="width: 40px; height: 40px; object-fit: cover;">
                 @else
                     <img src="{{ asset('assets/img/user_default.png') }}" class="img-circle elevation-2"
                         alt="User Image">
@@ -97,8 +97,14 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('carousel.index') }}" class="nav-link @yield('carousel')">
-                            <i class="nav-icon ion ion-person-add"></i>
+                            <i class="nav-icon ion ion-images"></i>
                             <p>Carousel</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('eskul.index') }}" class="nav-link @yield('eskul')">
+                            <i class="nav-icon ion ion-images"></i>
+                            <p>Eskul</p>
                         </a>
                     </li>
                 @elseif (auth()->user()->level_id == 2)
