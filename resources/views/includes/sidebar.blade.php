@@ -101,12 +101,13 @@
                             <p>Carousel</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('eskul.index') }}" class="nav-link @yield('eskul')">
-                            <i class="nav-icon ion ion-images"></i>
-                            <p>Eskul</p>
-                        </a>
-                    </li>
+                <li class="nav-item">
+    <a href="{{ route('eskul.index') }}" class="nav-link @yield('eskul')">
+        <i class="nav-icon ion ion-ios-people"></i>
+        <p>Eskul</p>
+    </a>
+</li>
+
                 @elseif (auth()->user()->level_id == 2)
                     <li class="nav-header">Guru</li>
                     <!-- Tambahkan menu untuk Guru -->
