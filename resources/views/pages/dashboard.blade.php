@@ -56,22 +56,22 @@
             {{-- @if(auth()->user()->level_id != 1) --}}
             <div class="row text-center">
                 <div class="col-6 col-md-3 mb-3">
-                    <a href="#" class="btn btn-outline-primary w-100 py-3">
+                    <a href="{{route('siswa.eskul.index')}}" class="btn btn-outline-primary w-100 py-3">
                         <i class="fas fa-users fa-2x mb-2"></i><br>Ekstrakurikuler
                     </a>
                 </div>
                 <div class="col-6 col-md-3 mb-3">
-                    <a href="#" class="btn btn-outline-success w-100 py-3">
+                    <a href="{{route('siswa.jadwal.index')}}" class="btn btn-outline-success w-100 py-3">
                         <i class="fas fa-calendar-alt fa-2x mb-2"></i><br>Jadwal Eskul
                     </a>
                 </div>
                 <div class="col-6 col-md-3 mb-3">
-                    <a href="#" class="btn btn-outline-info w-100 py-3">
+                    <a href="{{route('siswa.nilai.index')}}" class="btn btn-outline-info w-100 py-3">
                         <i class="fas fa-clipboard-check fa-2x mb-2"></i><br>Riwayat Nilai
                     </a>
                 </div>
                 <div class="col-6 col-md-3 mb-3">
-                    <a href="#" class="btn btn-outline-warning w-100 py-3">
+                    <a href="{{route('siswa.absensi.index')}}" class="btn btn-outline-warning w-100 py-3">
                         <i class="fas fa-user-check fa-2x mb-2"></i><br>Riwayat Absen
                     </a>
                 </div>

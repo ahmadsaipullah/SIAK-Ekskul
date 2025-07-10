@@ -109,42 +109,60 @@
 </li>
 
                 @elseif (auth()->user()->level_id == 2)
-                    <li class="nav-header">Guru</li>
-                    <!-- Tambahkan menu untuk Guru -->
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-list"></i>
-                            <p>Penilaian</p>
-                        </a>
-                    </li>
-                @elseif (auth()->user()->level_id == 3)
-                    <li class="nav-header">Siswa</li>
-                    <!-- Tambahkan menu untuk Siswa -->
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>Ekstrakurikuler</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-calendar-alt"></i>
-                            <p>Jadwal Eskul</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-clipboard-check"></i>
-                            <p>Riwayat Nilai</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-user-check"></i>
-                            <p>Riwayat Absen</p>
-                        </a>
-                    </li>
-                @endif
+                   <li class="nav-header">Pelatih</li>
+
+<li class="nav-item">
+    <a href="{{ route('pelatih.eskul.index') }}" class="nav-link @yield('eskul')">
+        <i class="nav-icon fas fa-users"></i>
+        <p>Eskul Saya</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ route('pertemuan.index') }}" class="nav-link @yield('pertemuan')">
+        <i class="nav-icon fas fa-calendar"></i>
+        <p>Pertemuan</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{ route('pelatih.nilai.index') }}" class="nav-link @yield('nilai')">
+        <i class="nav-icon fas fa-star"></i>
+        <p>Penilaian</p>
+    </a>
+</li>
+
+    <li class="nav-item">
+        <a href="{{ route('pelatih.absensi.index') }}" class="nav-link @yield('absensi')">
+            <i class="nav-icon fas fa-user-check"></i>
+            <p>Riwayat Absen</p>
+        </a>
+    </li>
+          @elseif (auth()->user()->level_id == 4)
+    <li class="nav-header">Siswa</li>
+    <li class="nav-item">
+        <a href="{{ route('siswa.eskul.index') }}" class="nav-link @yield('eskul')">
+            <i class="nav-icon fa fa-graduation-cap"></i>
+            <p>Ekstrakurikuler</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('siswa.jadwal.index') }}" class="nav-link @yield('jadwal')">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>Jadwal Eskul</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('siswa.nilai.index') }}" class="nav-link @yield('nilai')">
+            <i class="nav-icon fas fa-clipboard-check"></i>
+            <p>Riwayat Nilai</p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="{{ route('siswa.absensi.index') }}" class="nav-link @yield('absensi')">
+            <i class="nav-icon fas fa-user-check"></i>
+            <p>Riwayat Absen</p>
+        </a>
+    </li>
+@endif
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

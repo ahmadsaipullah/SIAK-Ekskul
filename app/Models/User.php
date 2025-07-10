@@ -53,5 +53,27 @@ class User extends Authenticatable
         return $this->belongsTo(Level::class, 'level_id', 'id');
     }
 
+      // Relasi untuk pelatih eskul
+    public function eskulsDilatih()
+    {
+        return $this->hasMany(Eskul::class, 'pelatih_id');
+    }
+
+    // Relasi untuk siswa yang daftar eskul
+    public function pendaftaranEskul()
+    {
+        return $this->hasMany(PendaftaranEskul::class);
+    }
+
+    public function absensiEskul()
+    {
+        return $this->hasMany(AbsensiEskul::class);
+    }
+
+    public function nilaiEskul()
+    {
+        return $this->hasMany(NilaiEskul::class);
+    }
+
 
 }
