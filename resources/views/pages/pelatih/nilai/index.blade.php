@@ -20,7 +20,7 @@
                             <h6 class="text-primary">{{ $e->nama_eskul }}</h6>
 
                             <div class="table-responsive">
-                                <table class="table table-bordered table-sm">
+                                <table id="Table" class="table table-bordered table-sm">
                                     <thead class="thead-light text-center">
                                         <tr>
                                             <th>Nama</th>
